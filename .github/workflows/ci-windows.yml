@@ -60,6 +60,12 @@ jobs:
           vfx-platform: ${{ matrix.vfx-platform }}
           msvc-component: ${{ matrix.msvc-component }}
           msvc-compiler: ${{ matrix.msvc-compiler }}
+       - name: Upload OpenRV build
+         uses: actions/upload-artifact@v4
+         with:
+          name: OpenRV-Windows-${{ matrix.vfx-platform }}-${{ matrix.build-type }}
+          path: _install
+          if-no-files-found: error
 
   # CY2025 Debug — runs when cmake files change or on full matrix
   windows-debug:
